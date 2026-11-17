@@ -1,0 +1,6 @@
+# SwiftPM 編譯暫存（建置後自動刪除）
+.build/
+# 產出的 .app
+build/
+.DS_Store
+.swiftpm/
