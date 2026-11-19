@@ -4,6 +4,8 @@ A lightweight macOS screen annotation tool for presenters: draw on top of anythi
 Native Swift/AppKit, builds with Command Line Tools only (no Xcode needed). Docs are in Traditional Chinese.
 Free and open source. If it saves you time, you can support its maintenance on [Ko-fi](https://ko-fi.com/fengqingtech).
 
+![在簡報上直接畫重點：橘色框線、螢光筆，下方是工具列](docs/images/demo.jpg)
+
 macOS 螢幕標註工具：在 Teams 這類會議軟體分享螢幕時，直接在畫面上畫重點，一個快捷鍵把「簡報＋標註」截圖存檔。
 
 - 九種工具：畫筆、螢光筆、直線、箭頭、方框、橢圓、文字、雷射筆、橡皮擦；八種顏色
@@ -11,6 +13,26 @@ macOS 螢幕標註工具：在 Teams 這類會議軟體分享螢幕時，直接�
 - 三種截圖：整個螢幕、拖曳範圍、點選視窗；存到「下載」並複製到剪貼簿
 - 支援多螢幕；只出現在選單列，不佔 Dock
 - 不連網路
+
+## 使用情境
+
+以下畫面都是示意，簡報與內容為示範資料。
+
+### 線上簡報：邊講邊畫
+
+在 Teams 分享整個螢幕時，按 ⌃⌥A 進入畫圖模式，直接在簡報上圈重點、畫箭頭。要翻頁時再按一次，切回穿透模式就能正常操作簡報。
+
+### 帶大家看同一個地方
+
+講到細節時打開聚光燈（⌃⌥F），畫面其他地方變暗；數字太小就用放大鏡（⌃⌥M）。遠端的人不用再問「你說的是哪裡」。
+
+![聚光燈與放大鏡](docs/images/spotlight.jpg)
+
+### 會後留存：一鍵截圖
+
+按 ⌃⌥S，簡報和標註一起存成一張圖，放在「下載」並複製到剪貼簿，可以直接貼上。搭配 [錄音筆記](https://github.com/FengQing-TW/obsidian-meeting-recorder) 時，截圖會自動收進會議筆記，錄音中還會排到截圖那一秒。
+
+![一鍵截圖並自動收進錄音筆記](docs/images/to-obsidian.jpg)
 
 ## 需求
 
@@ -40,6 +62,8 @@ macOS 螢幕標註工具：在 Teams 這類會議軟體分享螢幕時，直接�
 3. 第一次截圖或開放大鏡時，系統會要求「螢幕與系統錄音」權限；打開後重開 AnnotateScreen。已用固定的本機憑證簽章，重新建置後不必再開（新電腦要先跑一次 `tools/setup_signing.sh`）。
 
 ## 快捷鍵
+
+![工具列與快捷鍵一覽](docs/images/tools.jpg)
 
 | 全域 | 功能 |
 | :-- | :-- |
