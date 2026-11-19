@@ -2,6 +2,7 @@
 
 A lightweight macOS screen annotation tool for presenters: draw on top of anything while sharing your screen, then save "slides + annotations" as one image with a hotkey.
 Native Swift/AppKit, builds with Command Line Tools only (no Xcode needed). Docs are in Traditional Chinese.
+Free and open source. If it saves you time, you can support its maintenance on [Ko-fi](https://ko-fi.com/fengqingtech).
 
 macOS 螢幕標註工具：在 Teams 這類會議軟體分享螢幕時，直接在畫面上畫重點，一個快捷鍵把「簡報＋標註」截圖存檔。
 
@@ -75,6 +76,10 @@ macOS 螢幕標註工具：在 Teams 這類會議軟體分享螢幕時，直接�
 ## 搭配 Obsidian
 
 截圖固定存到 `~/Downloads`，檔名 `AnnotateScreen_yyyyMMdd_HHmmss.png`。搭配的 Obsidian 錄音外掛靠這個位置和檔名把截圖收進筆記，所以這兩項不要改。
+
+## 支持
+
+免費、開放原始碼。覺得好用的話，歡迎在 [Ko-fi](https://ko-fi.com/fengqingtech) 請我們喝杯咖啡，支持後續維護。
 
 ## 授權
 
