@@ -315,6 +315,12 @@ final class CanvasView: NSView {
             app.clearAllAndExitDrawing()
             return true
         }
+        // ⌘3：隱藏所有螢幕的標註並回到滑鼠控制（不清除）。2026-11-25 使用者要求；同上，是全域熱鍵失敗時的備援（20＝數字 3）
+        if window?.isKeyWindow == true, let app, event.keyCode == 20,
+           event.modifierFlags.intersection(.deviceIndependentFlagsMask) == .command {
+            app.hideAllAndExitDrawing()
+            return true
+        }
         guard textSession == nil, window?.isKeyWindow == true, let app else {
             return super.performKeyEquivalent(with: event)
         }

@@ -305,6 +305,12 @@ final class AppController {
         if !handlerOK || hotKeys.register(keyCode: kVK_ANSI_4, modifiers: cmdKey, action: quick) == nil {
             failedHotKeys.append("⌘4 畫筆／滑鼠切換")
         }
+        // ⌘3：畫筆 ↔ 滑鼠 來回切換，但不清除、只隱藏標註（2026-11-25 使用者要求，見 toggleQuickHideMode）。
+        // 同 ⌘4 常駐註冊；代價是其他程式的 ⌘3 會失效
+        let quickHide: () -> Void = { [unowned self] in self.runFromHotKey { self.toggleQuickHideMode() } }
+        if !handlerOK || hotKeys.register(keyCode: kVK_ANSI_3, modifiers: cmdKey, action: quickHide) == nil {
+            failedHotKeys.append("⌘3 畫筆／滑鼠切換（隱藏標註）")
+        }
     }
 
     /// 聚光燈／放大鏡開啟時，暫時註冊不帶修飾鍵的 [ ]（覆蓋層此時穿透、收不到鍵盤）
@@ -532,6 +538,20 @@ final class AppController {
     /// - 不在畫圖 → 回到畫圖模式（沿用目前的工具與顏色）；畫面上原有的標註不動
     func toggleQuickMode() {
         if isDrawing { clearAllAndExitDrawing() } else { setDrawing(true) }
+    }
+
+    /// ⌘3：畫筆 ↔ 滑鼠 來回切換，不清除標註（2026-11-25 使用者要求）
+    /// - 正在畫圖 → 隱藏所有螢幕的標註，回到穿透模式；標註仍保留在文件裡
+    /// - 不在畫圖 → 回到畫圖模式，setDrawing(true) 會把隱藏的標註重新顯示
+    func toggleQuickHideMode() {
+        if isDrawing { hideAllAndExitDrawing() } else { setDrawing(true) }
+    }
+
+    /// 隱藏所有螢幕的標註並回到穿透模式（不清除；⌘3、⌃⌥H 或再進畫圖模式就會重新顯示）
+    func hideAllAndExitDrawing() {
+        overlays.commitAllText()   // 還沒按 Enter 的文字先確定，免得隱藏時被丟掉
+        setAnnotationsHidden(true)
+        setDrawing(false)
     }
 
     /// 清除所有螢幕的標註並回到穿透模式；清掉的內容可以用 ⌃⌥Z 或工具列的復原一次全部還原
